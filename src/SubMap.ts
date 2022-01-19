@@ -1,7 +1,7 @@
 import MapLike from "./MapLike";
 
 
-export default class SubMap<K, V> implements Iterable<[K, V]> MapLike<K, V> {
+export default class SubMap<K, V> implements Iterable<[K, V]>, MapLike<K, V> {
     private readonly parent: MapLike<K, V>;
     private keys: Set<K>;
 
