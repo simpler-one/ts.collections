@@ -8,7 +8,7 @@ export default class SubMap<K, V> implements MapLike<K, V>, Iterable<[K, V]> {
 
     public constructor(
         parent: MapLike<K, V>,
-        keys?: I terable<K>,`
+        keys?: Iterable<K>,
     ) {
         if (!parent) {
             throw new Error("`parent` is mandatory");
