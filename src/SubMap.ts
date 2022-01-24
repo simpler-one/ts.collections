@@ -2,9 +2,12 @@ import MapLike from "./MapLike";
 
 
 export default class SubMap<K, V> implements MapLike<K, V>, Iterable<[K, V]> {
+    public get size(): number {
+        return this.keys.size;
+    }
+
     private readonly parent: MapLike<K, V>;
     private keys: Set<K>;
-
 
     public constructor(
         parent: MapLike<K, V>,
@@ -43,6 +46,12 @@ export default class SubMap<K, V> implements MapLike<K, V>, Iterable<[K, V]> {
         }
 
         this.keys.clear();
+    }
+
+    public forEach(callbackFn: (value: V, key: K, map: MapLike<K, V>) => void): void {
+        for (const k of this.keys) {
+            callbackFn(this.parent.get(k), k, this);
+        }
     }
 
     public *keys(): Iterable<K> {
