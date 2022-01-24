@@ -49,8 +49,8 @@ export default class SubMap<K, V> implements MapLike<K, V>, Iterable<[K, V]> {
     }
 
     public forEach(callbackFn: (value: V, key: K, map: MapLike<K, V>) => void): void {
-        for (const k of this.keys) {
-            callbackFn(this.parent.get(k), k, this);
+        for (const [k, v] of this.entries()) {
+            callbackFn(v, k, this);
         }
     }
 
